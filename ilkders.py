@@ -1,3 +1,13 @@
+print('Hello world!')
+print('What\'s your name ? ')
+myName = input()
+print('The length of your name is:')
+print(len(myName))
+print('What is your age?') 
+myAge = input()
+print('You will be ' + str(int(myAge) + 1) + ' in a year.')
+
+# ----------------- ORNEK KOD -------------------
 import os 
 import tarfile
 from six.moves import urllib
@@ -42,10 +52,12 @@ def save_fig(fig_id, tight_layout=True, fig_extension="png", resolution=300):
 import warnings
 warnings.filterwarnings(action="ignore", message="^internal gelsd")
 
+
+
 DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml2/master/"
 HOUSING_PATH = os.path.join("datasets","housing")
 HOUSING_URL = DOWNLOAD_ROOT + "datasets/housing/housing.tgz"
-
+# bu fonksiyon ev versisini bilsayara indirir.
 def fetch_housing_data(housing_url=HOUSING_URL, housing_path=HOUSING_PATH):
     if not os.path.isdir(housing_path):
         os.makedirs(housing_path)
@@ -54,19 +66,4 @@ def fetch_housing_data(housing_url=HOUSING_URL, housing_path=HOUSING_PATH):
     housing_tgz = tarfile.open(tgz_path)
     housing_tgz.extractall(path=housing_path)
     housing_tgz.close()
-
 fetch_housing_data()
-import pandas as pd
-
-def load_housing_data(housing_path=HOUSING_PATH):
-    csv_path = os.path.join(housing_path,"housing.csv")
-    return pd.read_csv(csv_path)
-
-housing = load_housing_data()
-housing.head()
-housing.plot(kind="scatter", x="longitude", y="latitude",alpha=0.4,s=housing["population"]/100,label="population",
-            figsize=(10,7),c="median_house_value",cmap=plt.get_cmap("jet"),colorbar=True)
-plt.legend()
-save_fig("housing_prices_scatterplot")
-
-housing.corr()
