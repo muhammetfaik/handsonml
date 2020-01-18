@@ -24,3 +24,6 @@ class CombinedAttributesAdder(BaseEstimator, TransformerMixin):
 housing = load_housing_data()
 attr_adder = CombinedAttributesAdder(add_bedrooms_per_room = False)
 housing_extra_attribs = attr_adder.transform(housing.values)
+
+
+np.random.permutation()
